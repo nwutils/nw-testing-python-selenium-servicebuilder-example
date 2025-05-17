@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: ".github/workflows"
+    schedule:
+      interval: "daily"
+    groups:
+      gha:
+        patterns:
+          - "*"
+- package-ecosystem: "npm"
+    directory: "."
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+    versioning-strategy: increase
+    groups:
+      npm:
+        patterns:
+          - "*"
+- package-ecosystem: "pip"
+    directory: "."
+    schedule:
+      interval: "daily"
+    versioning-strategy: increase
+    groups:
+      pip:
+        patterns:
+          - "*"

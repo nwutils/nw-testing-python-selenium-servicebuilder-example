@@ -1,0 +1,16 @@
+{
+    "name": "nw-testing-py-selenium-servicebuilder-example",
+    "type": "module",
+    "main": "index.html",
+    "private": true,
+    "scripts": {
+        "postinstall": "base-volta-off-of-nwjs"
+    },
+    "devDependencies": {
+        "base-volta-off-of-nwjs": "^1.0.5",
+        "nw": "^0.99.1"
+    },
+    "volta": {
+        "node": "23.11.0"
+    }
+}

@@ -1,0 +1,4 @@
+selenium == 4.16.0
+semver == 3.0.2
+pytest == 7.4.3
+urllib3 == 2.2.1

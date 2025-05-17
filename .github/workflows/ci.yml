@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  pull_request:
+    branches:
+    - main
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os:
+        - macos-15
+        - ubuntu-24.04
+        - windows-2025
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.1
+      - name: Use Node version defined in manifest
+        uses: volta-cli/action@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4.6.1
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install Node dependencies
+        run: npm ci
+      - name: Install Pip dependencies
+        run: python3 -m pip install -r requirements.txt
+      - name: Run Python tests
+        run: python3 -m pytest ./test.py
